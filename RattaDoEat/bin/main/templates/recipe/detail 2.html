@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+  
+	String.prototype.unescapeHtml = function(){
+    	return this.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, "\"");
+  	};
+  
+	function parseHTML(content){
+		console.log("content: "+ content.unescapeHtml());
+		//$('#content').html(content.unescapeHtml());
+		document.querySelector('#content').insertAdjacentHTML('afterend', content.unescapeHtml());
+		
+		//span 안에 image 들어가게
+		//document.querySelector('#content').insertAdjacentHTML('afterbegin', content.unescapeHtml());
+	}
+</script>
+</head>
+<body>
+<h1>레시피북 상세 페이지</h1>
+	rIdx: <span th:text="${rIdxList.rIdx}"></span>	<br>
+	uIdx: <span th:text="${rIdxList.uIdx}"></span>	<br>
+	content: <span th:id="content"></span>
+	<script> //escape 문자를 html 로 parsing
+   		parseHTML("[[${rIdxList.content}]]");
+   	</script>
+	<br>
+	hit: <span th:text="${rIdxList.hit}"></span>	<br>
+	likeNum: <span th:text="${rIdxList.likeNum}"></span>	<br>
+	scrapNum: <span th:text="${rIdxList.scrapNum}"></span>	<br>
+	regDate: <span th:text="${rIdxList.regDate}"></span>	<br>
+	modifyDate: <span th:text="${rIdxList.modifyDate}"></span>
+</body>
+</html>

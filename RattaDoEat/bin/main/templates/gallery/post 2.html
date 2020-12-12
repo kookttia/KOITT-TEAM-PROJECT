@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>[[${userName}]]님의 사진</title>
+</head>
+<body>
+		<!-- type -->
+		<div th:each="post : ${galleryPost}">
+			<span th:text = "${post.type1}"></span>
+			<span th:text = "${post.type2}"></span>
+		</div>
+		
+		<!-- image +${img.imgUuid} -->
+		<div th:each="img : ${images}">
+			<img th:src="@{resources/upload/9e80912f-eb2d-412d-b180-e6a4f87f7eff.jpg}" /> 
+		</div>
+		
+		<!-- tag -->
+		<div th:each="post : ${galleryPost}">
+			<span th:text = "${post.tag}"></span>
+		</div>
+</body>
+<script type="text/javascript">
+</script>
+</html>

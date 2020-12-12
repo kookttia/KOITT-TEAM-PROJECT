@@ -36,7 +36,7 @@ public class MyPageController {
 		model.addAttribute("newComment", service.viewNewComment(uIdx));
 		
 		// 모델 6. 좋아요한 글 전체
-		model.addAttribute("like", service.viewIsLike(uIdx));
+		model.addAttribute("like", service.viewLikes(uIdx));
 		
 		// 모델 7. 스크랩한 글 전체
 		model.addAttribute("scrap", service.viewIsScrap(uIdx));

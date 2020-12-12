@@ -15,7 +15,7 @@ public interface MyPageService {
 
 	Object viewNewComment(int uIdx);
 
-	Object viewIsLike(int uIdx);
+	Object viewLikes(int uIdx);
 
 	Object viewIsScrap(int uIdx);
 

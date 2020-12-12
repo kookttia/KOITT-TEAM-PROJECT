@@ -15,5 +15,6 @@ public interface ContentDao {
 	public void likeNumUpdate(int rIdx);
 	public void scrapNumUpdate(int rIdx);
 	public List<ContentVO> getAllByUser(int uIdx);
+	public ContentVO viewByRIdx(int rIdx);
 	
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+세션 : <p th:text="${session.demoSession}"></p>
+
+<div th:insert="layout/header"></div>
+
+	<h1>"hello" 로 이동된 페이지.</h1>
+
+
+	접속 테스트 페이지.
+	토큰 : [[${_csrf.token}]] <br/>
+    토큰 헤더 이름: [[${_csrf.headerName}]]<br/>
+	토큰 파라미터 이름:[[${_csrf.parameterName}]]<br/>
+	
+	
+	<h1 th:inline="text">Hello <span th:text="${userName}" ></span> [[${#httpServletRequest.remoteUser}]]!</h1>
+
+	<form th:action="@{/logout_proc.go}" method="post">
+		<input type="submit" value="로그아웃">	
+		기본시큐리티설정 /login?logout 로 리디렉션
+	</form>
+	
+	
+	
+	<div sec:authorize="hasAuthority('ADMIN')">- 관리자 등급</div>
+    <div sec:authorize="hasAuthority('USER')">- 일반 사용자 등급</div>
+	
+</body>
+</html>

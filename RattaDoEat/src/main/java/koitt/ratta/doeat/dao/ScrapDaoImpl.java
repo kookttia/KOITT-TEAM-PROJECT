@@ -1,11 +1,14 @@
 package koitt.ratta.doeat.dao;
 
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import koitt.ratta.doeat.domain.GalleryScrapVo;
+import koitt.ratta.doeat.domain.RecipeScrapVo;
 
 @Repository
 public class ScrapDaoImpl implements ScrapDao{
@@ -23,5 +26,11 @@ public class ScrapDaoImpl implements ScrapDao{
 	@Override
 	public int viewScrap(int gIdx) {
 		return sqlSession.selectOne(path + "viewScrap", gIdx);
+	}
+
+	@Override
+	public List<RecipeScrapVo> getRecipeByUIdx(int uIdx) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

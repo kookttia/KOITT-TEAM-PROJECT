@@ -57,11 +57,21 @@ public class ContentDaoImpl implements ContentDao {
 	}
 	
 	/**
+	 * 글쓴이로 레시피 글 조회
 	 * @author 진민영
 	 */
 	@Override
 	public List<ContentVO> getAllByUser(int uIdx) {
 		return sqlSession.selectList("getAllByUser", uIdx);
+	}
+
+	/**
+	 * 게시판 인덱스로 단일 게시물 조회
+	 * @author 진민영
+	 */
+	@Override
+	public ContentVO viewByRIdx(int rIdx) {
+		return sqlSession.selectOne("getByRIdx", rIdx);
 	}
 	
 }

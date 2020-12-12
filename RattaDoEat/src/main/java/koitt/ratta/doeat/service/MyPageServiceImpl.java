@@ -9,9 +9,20 @@ import org.springframework.stereotype.Service;
 import koitt.ratta.doeat.dao.CommentDao;
 import koitt.ratta.doeat.dao.ContentDao;
 import koitt.ratta.doeat.dao.GalleryDao;
+import koitt.ratta.doeat.dao.LikeDao;
+import koitt.ratta.doeat.dao.ScrapDao;
 import koitt.ratta.doeat.domain.ContentVO;
+import koitt.ratta.doeat.domain.GalleryLikeVo;
 import koitt.ratta.doeat.domain.GalleryListVo;
+<<<<<<< HEAD
 import koitt.ratta.doeat.domain.ComCommentVO;
+=======
+import koitt.ratta.doeat.domain.GalleryScrapVo;
+import koitt.ratta.doeat.domain.RecipeLikeVo;
+import koitt.ratta.doeat.domain.RecipeScrapVo;
+import koitt.ratta.doeat.domain.ComCommentVO;
+import koitt.ratta.doeat.domain.CommunityVO;
+>>>>>>> 2145a29b49439ea902116d04bb1e6c7042616747
 
 /**
  * 
@@ -29,6 +40,12 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	@Autowired
 	CommentDao commentDao;
+	
+	@Autowired
+	LikeDao likeDao;
+	
+	@Autowired
+	ScrapDao scrapDao;
 	
 	/**
 	 * 유저가 작성한 갤러리 글 조회
@@ -82,12 +99,33 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	/**
 	 * 좋아요한 갤러리, 레시피 글 조회
-	 * @return CommunityVO 보류
+	 * @param uIdx 로그인 유저
+	 * @return 커뮤니티 통합 vo 리스트
 	 */
 	@Override
-	public Object viewIsLike(int uIdx) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CommunityVO> viewLikes(int uIdx) {
+		
+		List<CommunityVO> communitys = new ArrayList<CommunityVO>();
+		
+		// 로그인 유저가 좋아요 한 갤러리 게시글 조회
+		for (GalleryLikeVo like : likeDao.viewLikesByUIdx(uIdx)) {
+			GalleryListVo gallery = galleryDao.viewByGIdx(like.getGIdx());
+			CommunityVO tmp = CommunityVO.builder().gIdx(gallery.getGIdx())
+												   .uIdx(gallery.getUIdx())
+												   .content(gallery.getContent())
+												   .imgUuid(gallery.getImgUuid()).build();
+			communitys.add(tmp);
+		}
+		
+		// 로그인 유저가 좋아요 한 레시피 게시글 조회
+		for (RecipeLikeVo like : likeDao.getRecipeByUIdx(uIdx)) {
+			ContentVO content = contentDao.viewByRIdx(like.getRIdx());
+			CommunityVO tmp = CommunityVO.builder().gIdx(content.getRIdx())
+												   .uIdx(content.getUIdx())
+												   .content(content.getContent()).build();
+			communitys.add(tmp);
+		}
+		return communitys;
 	}
 	
 	/**
@@ -95,8 +133,14 @@ public class MyPageServiceImpl implements MyPageService {
 	 * @return CommunityVO 보류
 	 */
 	@Override
-	public Object viewIsScrap(int uIdx) {
-		// TODO Auto-generated method stub
+	public List<CommunityVO> viewIsScrap(int uIdx) {
+		
+		List<CommunityVO> communitys = new ArrayList<CommunityVO>();
+				
+		for (RecipeScrapVo scrap : scrapDao.getRecipeByUIdx(uIdx)) {
+			
+		}
+		
 		return null;
 	}
 

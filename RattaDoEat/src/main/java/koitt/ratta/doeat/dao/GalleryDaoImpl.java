@@ -37,4 +37,10 @@ public class GalleryDaoImpl implements GalleryDao{
 		GalleryVo galleryVo = sqlSession.selectOne("viewDetail", gIdx);
 		return galleryVo;
 	}
+
+	@Override
+	public GalleryListVo viewByGIdx(int gIdx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

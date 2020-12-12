@@ -2,6 +2,7 @@ package koitt.ratta.doeat.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,15 +55,14 @@ public class CK5ImageUploadController {
 		String filename = fileload.getOriginalFilename();
 
 		// 업로드 폴더
-		String uploadPath = servletContext.getRealPath("/WEB-INF/classes/static/image");
 
 		// 업로드 수행
 		filename = fileNamingEncoder.enFilename(filename);
-		File file = new File(uploadPath + "/" + filename);
+		File file = new File("../upload/recipe_img/" + filename);
 
 		try {
 			map.put("uploaded", true);
-			map.put("url", request.getContextPath() + "/image/" + filename);
+			map.put("url", "upload/recipe_img/" + filename);
 
 			json = mapper.writeValueAsString(map);
 
@@ -75,7 +75,7 @@ public class CK5ImageUploadController {
 
 			json = mapper.writeValueAsString(map);
 		}
-
+		
 		return json;
 	}
 }

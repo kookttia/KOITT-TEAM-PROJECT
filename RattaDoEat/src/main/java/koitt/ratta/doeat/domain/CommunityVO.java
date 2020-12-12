@@ -1,5 +1,6 @@
 package koitt.ratta.doeat.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -13,10 +14,19 @@ import lombok.ToString;
 @ToString
 public class CommunityVO {
 
-	int g_idx;
-	int r_idx;
-	int u_idx;
+	int gIdx;
+	int rIdx;
+	int uIdx;
 	String content;
-	String img_uuid;
+	String imgUuid;
+	
+	@Builder
+	public CommunityVO(int gIdx, int rIdx, int uIdx, String content, String imgUuid) {
+		this.gIdx = gIdx;
+		this.rIdx = rIdx;
+		this.uIdx = uIdx;
+		this.content = content;
+		this.imgUuid = imgUuid;
+	}
 
 }

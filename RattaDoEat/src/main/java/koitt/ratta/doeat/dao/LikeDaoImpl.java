@@ -1,10 +1,13 @@
 package koitt.ratta.doeat.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import koitt.ratta.doeat.domain.GalleryLikeVo;
+import koitt.ratta.doeat.domain.RecipeLikeVo;
 
 /**
  * 
@@ -52,5 +55,21 @@ public class LikeDaoImpl implements LikeDao {
 	@Override
 	public int unLike(GalleryLikeVo galleryLikeVo) {
 		return sqlSession.delete(path + "unLike", galleryLikeVo);
+	}
+	
+	/**
+	 * 좋아요 누른 사람으로 좋아요한 갤러리 게시글을 조회하는 쿼리
+	 */
+	@Override
+	public List<GalleryLikeVo> viewLikesByUIdx(int uIdx) {
+		return sqlSession.selectList(path + "viewLikesByUIdx", uIdx);
+	}
+
+	/**
+	 * 좋아요 누른 사람으로 좋아요한 레시피 게시글을 조회하는 쿼리
+	 */
+	@Override
+	public List<RecipeLikeVo> getRecipeByUIdx(int uIdx) {
+		return sqlSession.selectList(path + "getByUIdx", uIdx);
 	}
 }
