@@ -38,6 +38,14 @@ public class MemberController {
 	@Autowired
 	private AccountService accountService;
 	
+
+	//GW 의 테스트 페이지 이동
+	@RequestMapping("GWtest")
+	public String GWtest(Model model) throws Exception {
+		//model.addAttribute("hello", "model 안녕하세요.");
+		return "GW_test_page";
+	}
+	
 	//기본 홈 이동
 	@RequestMapping(value = {"/", "home"})
 	public String main(Model model) throws Exception {
@@ -190,4 +198,10 @@ public class MemberController {
 	//비밀번호 변경
 	//인코딩된 값을 비교합니다. 
 	
+	//유저 프로필 사진 변경 
+	@RequestMapping("user/profile.do")
+	public String changeProfilePicture() {
+		
+		return "";
+	}
 }

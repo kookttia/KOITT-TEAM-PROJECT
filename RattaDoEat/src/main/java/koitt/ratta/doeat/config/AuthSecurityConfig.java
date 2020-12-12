@@ -108,7 +108,8 @@ public class AuthSecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionManagement() // 세션 제어
 					.maximumSessions(1) // 최대 동시 세션 사용수
 					.expiredUrl("/login.go")
-					.sessionRegistry(sessionRegistry);
+					.sessionRegistry(sessionRegistry)
+					.and();
 
 		//리멤버미 아직 구현안함 ----------
 		// 추가된 부분 : remember-me 관련

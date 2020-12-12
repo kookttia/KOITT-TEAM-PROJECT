@@ -39,7 +39,9 @@ CREATE SEQUENCE user_info_SEQ
 START WITH 1
 INCREMENT BY 1;
 
-COMMENT ON TABLE user_info IS 'JPA';
+ALTER TABLE USER_INFO ADD profile_picture VARCHAR(300) DEFAULT '/RattaDoEat/UserProfilePicture/NoPictures.jpg' ;
+
+COMMENT ON TABLE user_info IS 'author : GW';
 COMMENT ON COLUMN user_info.u_idx IS '인덱스';
 COMMENT ON COLUMN user_info.user_id IS '아이디(이메일)';
 COMMENT ON COLUMN user_info.nickname IS '닉네임';
@@ -50,7 +52,8 @@ COMMENT ON COLUMN user_info.social IS '코드로 구분(naver=N, google=G, kakao
 COMMENT ON COLUMN user_info.phone IS '휴대폰';
 COMMENT ON COLUMN user_info.birth IS '생일';
 COMMENT ON COLUMN user_info.address IS '집주소';
-    
+COMMENT ON COLUMN user_info.profile_picture IS '유저 프로필 사진';
+
 --user roles 테이블 생성
 CREATE TABLE user_roles
 (
