@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import koitt.ratta.doeat.domain.comCommentVO;
+import koitt.ratta.doeat.domain.ComCommentVO;
 
 @Repository
 public class CommentDaoImpl implements CommentDao {
@@ -17,12 +17,12 @@ public class CommentDaoImpl implements CommentDao {
 	String path = "koitt.ratta.doeat.mapper.CommentMapper.";
 
 	@Override
-	public List<comCommentVO> viewAllByGIdx(int gIdx) {
+	public List<ComCommentVO> viewAllByGIdx(int gIdx) {
 		return sqlsession.selectList(path + "viewAllByGIdx", gIdx);
 	}
 	
 	@Override
-	public List<comCommentVO> viewAllByRIdx(int rIdx) {
+	public List<ComCommentVO> viewAllByRIdx(int rIdx) {
 		return sqlsession.selectList(path + "viewAllByUIdx", rIdx);
 	}
 

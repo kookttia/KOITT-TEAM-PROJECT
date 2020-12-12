@@ -2,12 +2,12 @@ package koitt.ratta.doeat.dao;
 
 import java.util.List;
 
-import koitt.ratta.doeat.domain.comCommentVO;
+import koitt.ratta.doeat.domain.ComCommentVO;
 
 public interface CommentDao {
 
-	List<comCommentVO> viewAllByGIdx(int gIdx);
+	List<ComCommentVO> viewAllByGIdx(int gIdx);
 
-	List<comCommentVO> viewAllByRIdx(int rIdx);
+	List<ComCommentVO> viewAllByRIdx(int rIdx);
 
 }

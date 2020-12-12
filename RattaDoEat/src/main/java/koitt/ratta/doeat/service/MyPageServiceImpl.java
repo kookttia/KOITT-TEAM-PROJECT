@@ -11,7 +11,7 @@ import koitt.ratta.doeat.dao.ContentDao;
 import koitt.ratta.doeat.dao.GalleryDao;
 import koitt.ratta.doeat.domain.ContentVO;
 import koitt.ratta.doeat.domain.GalleryListVo;
-import koitt.ratta.doeat.domain.comCommentVO;
+import koitt.ratta.doeat.domain.ComCommentVO;
 
 /**
  * 
@@ -59,20 +59,20 @@ public class MyPageServiceImpl implements MyPageService {
 	 * @return List<comCommentVO> 
 	 */
 	@Override
-	public List<comCommentVO> viewNewComment(int uIdx) {
+	public List<ComCommentVO> viewNewComment(int uIdx) {
 		
-		List<comCommentVO> comments = new ArrayList<comCommentVO>();
+		List<ComCommentVO> comments = new ArrayList<ComCommentVO>();
 		
 		// 로그인 유저가 쓴 게시글 조회
 		for (GalleryListVo post : galleryDao.viewAllByUser(uIdx)) {
 			// 조회한 게시글에 최근 72시간 내에 달린 덧글 조회
-			for (comCommentVO galleryComment : commentDao.viewAllByGIdx(post.getGIdx())) {
+			for (ComCommentVO galleryComment : commentDao.viewAllByGIdx(post.getGIdx())) {
 				comments.add(galleryComment);
 			}
 		}
 		
 		for (ContentVO post : contentDao.getAllByUser(uIdx)) {
-			for (comCommentVO recipeComment : commentDao.viewAllByRIdx(post.getRIdx())) {
+			for (ComCommentVO recipeComment : commentDao.viewAllByRIdx(post.getRIdx())) {
 				comments.add(recipeComment);
 			}
 		}
