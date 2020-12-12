@@ -14,15 +14,13 @@ import koitt.ratta.doeat.dao.ScrapDao;
 import koitt.ratta.doeat.domain.ContentVO;
 import koitt.ratta.doeat.domain.GalleryLikeVo;
 import koitt.ratta.doeat.domain.GalleryListVo;
-<<<<<<< HEAD
-import koitt.ratta.doeat.domain.ComCommentVO;
-=======
+
 import koitt.ratta.doeat.domain.GalleryScrapVo;
 import koitt.ratta.doeat.domain.RecipeLikeVo;
 import koitt.ratta.doeat.domain.RecipeScrapVo;
 import koitt.ratta.doeat.domain.ComCommentVO;
 import koitt.ratta.doeat.domain.CommunityVO;
->>>>>>> 2145a29b49439ea902116d04bb1e6c7042616747
+
 
 /**
  * 
